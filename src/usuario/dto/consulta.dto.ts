@@ -1,7 +1,7 @@
 export class ListaUsuarioDTO{
     constructor(
         readonly id: String,
-        // readonly nome: string,
+        readonly nome: string,
         // readonly idade: string,
         readonly cidade: String,
         readonly email: String,
