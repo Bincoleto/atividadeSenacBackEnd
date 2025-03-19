@@ -77,6 +77,10 @@ export class FilmesController{
     }
 
     //Mostrar messagem pelo ID do filme
+    @Get('/:mensagem.id')
+    mostrarMensagemPorId(@Param('id') id:string){
+        
+    }
     
 
     //Atualiza um Filme
