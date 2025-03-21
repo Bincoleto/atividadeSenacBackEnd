@@ -1,5 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import { UsuarioEntity } from "./usuario.entity";
+import { EmailUnico } from "./validacao/email-unico.validator";
 
 
 @Injectable()
@@ -21,6 +22,9 @@ export class UsuarioArmazenado{
         Object.entries(dadosAtualizacao).forEach(
             ([chave, valor]) => {
                 if(chave === "id"){
+                    return
+                }else if(chave === 'email'){
+                    usuario.TrocarSenha(valor);
                     return
                 }
                 if (valor === undefined){
@@ -46,13 +50,35 @@ export class UsuarioArmazenado{
 
     }
 
+
+    private buscarPorEmail(email: string){
+        const possivelUsuario = this.#usuario.find(
+            usuarioSalvo => usuarioSalvo.email === email
+        )
+
+        if(!possivelUsuario){
+            throw new Error("Usuário não Encontrado")
+        }
+
+        return possivelUsuario;
+
+    }
+
+    validarLogin(email: string, senha:string){
+        const usuario = this.buscarPorEmail(email);
+        return{
+            login: usuario.login(senha),
+            usuario: usuario,
+        }
+
+    }
+
     async validarEmail(email: string): Promise<boolean>{
         const possivelUsuario = this.#usuario.find(
             usuario => usuario.email === email
         );
         return (possivelUsuario !== undefined);
     }
-
 
     async removerUsuario(id: string){
         const usuario = this.buscarPorId(id);
@@ -64,33 +90,7 @@ export class UsuarioArmazenado{
         return usuario;
     }
 
-    // validarUsuario(dadosUsuarios){
-    //     var validacao: string[] = [];
-
-    //     if(!(dadosUsuarios.id != null)){
-    //         validacao.push("Id não pode ser nulo");
-    //     }
-    //     if(!(dadosUsuarios.nome != null)){
-    //         validacao.push("Nome não pode ser nulo");
-    //     }
-    //     if(!(dadosUsuarios.idade != null)){
-    //         validacao.push("Idade não pode ser nulo");
-    //     }
-    //     if(!(dadosUsuarios.cidade != null)){
-    //         validacao.push("Cidade não pode ser nulo");
-    //     }
-    //     if(!(dadosUsuarios.email != null)){
-    //         validacao.push("Email não pode ser nulo");
-    //     }
-    //     if(!(dadosUsuarios.telefone != null)){
-    //         validacao.push("Telefone não pode ser nulo");
-    //     }
-    //     if(!(dadosUsuarios.senha != null)){
-    //         validacao.push("Senha não pode ser nulo");
-    //     }
-
-    //     return validacao;
-    // }
+    
 }
 
     
