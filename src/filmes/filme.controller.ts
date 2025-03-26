@@ -6,6 +6,9 @@ import { v4 as uuid } from "uuid";
 import {ListaFilmeDTO} from "./dto/consultar-filme.dto"
 import {alteraFilmeDto} from "./dto/alterar-filme.dto"
 import { get } from "http";
+import { ApiTags } from "@nestjs/swagger";
+
+@ApiTags('Filmes')
 
 @Controller('/filmes')
 export class FilmesController{

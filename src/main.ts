@@ -19,9 +19,9 @@ async function bootstrap() {
   .setTitle('Api Filmes e Series')
   .setDescription('A presente API tem como objetivo simular cadastro', )
   .setVersion('1.0')
-  .addTag('usuario')
-  .addTag('filme')
-  .addTag('serie')
+  .addTag('Usuario')
+  .addTag('Filmes')
+  // .addTag('serie')
   .build()
 
   const document = SwaggerModule.createDocument(app, config);

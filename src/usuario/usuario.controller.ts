@@ -7,7 +7,9 @@ import { v4 as uuid } from "uuid";
 import { ListaUsuarioDTO } from "./dto/consulta.dto";
 import { alteraUsuarioDto } from "./dto/alterausuario.dto";
 import { LoginUsuarioDTO } from "./dto/loginUsuario.dto";
+import { ApiTags } from "@nestjs/swagger";
 
+@ApiTags('Usuario')
 
 @Controller('/usuario')
 export class UsuarioController{

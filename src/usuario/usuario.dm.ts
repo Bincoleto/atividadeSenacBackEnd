@@ -21,13 +21,13 @@ export class UsuarioArmazenado{
 
         Object.entries(dadosAtualizacao).forEach(
             ([chave, valor]) => {
+                if (valor === undefined){
+                    return
+                }
                 if(chave === "id"){
                     return
                 }else if(chave === 'email'){
                     usuario.TrocarSenha(valor);
-                    return
-                }
-                if (valor === undefined){
                     return
                 }
               usuario[chave] =   valor;
