@@ -49,4 +49,19 @@ export class criarUsuarioDTO{
     })
     senha: string;
 
+    
+    @IsString()
+    @ApiProperty({
+        example: '17047001',
+        description:'Informação do CEP da cidade'
+    })
+    cep: string;
+
+    @IsString()
+    @ApiProperty({
+        example: 'Apto 31 / BL 46 / PT 8',
+        description:'Deve ser informado o complemento do endereço'
+    })
+    complemento: string;
+
 }

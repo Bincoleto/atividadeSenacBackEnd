@@ -30,5 +30,13 @@ export class alteraUsuarioDto{
     @IsOptional()
     senha: string;
 
+    @IsString()
+    @IsOptional()
+    cep: string;
+
+    @IsString()
+    @IsOptional()
+    complemento: string;
+
 }
    
