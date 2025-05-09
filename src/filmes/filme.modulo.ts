@@ -1,11 +1,18 @@
-import { Module } from "@nestjs/common";
+import { DatabaseModule } from "src/database/database.module";
+import { generoProviders } from "src/genero/genero.provider";
+import { GeneroService } from "src/genero/genero.service";
 import { FilmesController } from "./filme.controller";
-import { FilmeArmezanado } from "./filme.dm"
+import { filmesProviders } from "./filmes.providers";
+import { Module } from "@nestjs/common";
+import { FilmeService } from "./filme.Service";
 
 @Module({
-    imports:[],
+    imports:[DatabaseModule],
     controllers:[FilmesController],
-    providers:[FilmeArmezanado]
+    providers:[...filmesProviders,
+    FilmeService,
+    ...generoProviders,
+    GeneroService]
 })
 
 export class FilmeModule{}

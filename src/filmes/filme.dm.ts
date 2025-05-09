@@ -1,65 +1,65 @@
-import { Injectable } from "@nestjs/common";
-import { FilmeEntity } from "./filme.entity";
+// import { Injectable } from "@nestjs/common";
+// import { FilmeEntity } from "./filme.entity";
 
-@Injectable()
-export class FilmeArmezanado{
-    #filme: FilmeEntity [] = [];
+// @Injectable()
+// export class FilmeArmezanado{
+//     #filme: FilmeEntity [] = [];
 
-    AdicionarFilme(filme: FilmeEntity){
-        this.#filme.push(filme);
-    }
+//     AdicionarFilme(filme: FilmeEntity){
+//         this.#filme.push(filme);
+//     }
 
-    get filme(){
-        return this.#filme;
-    }
+//     get filme(){
+//         return this.#filme;
+//     }
 
-    AtualizarFilme(id: string, filmeAtualizado: Partial<FilmeEntity>){
-        const filme = this.buscaFilmeId(id);
+//     AtualizarFilme(id: string, filmeAtualizado: Partial<FilmeEntity>){
+//         const filme = this.buscaFilmeId(id);
 
-        Object.entries(filmeAtualizado).forEach(
-            ([chave, valor]) => {
-                if(chave === 'id'){
-                    return
-                }
-                if (valor === undefined){
-                    return
-                }
-                filme[chave] =   valor;
-            }
-        )
-    }
+//         Object.entries(filmeAtualizado).forEach(
+//             ([chave, valor]) => {
+//                 if(chave === 'id'){
+//                     return
+//                 }
+//                 if (valor === undefined){
+//                     return
+//                 }
+//                 filme[chave] =   valor;
+//             }
+//         )
+//     }
 
-    //buscar o filme pelo ID
-    private buscaFilmeId(id: string){
-        const possivelFilme = this.#filme.find(
-            filmeSalvo => filmeSalvo.id === id
-        )
+//     //buscar o filme pelo ID
+//     private buscaFilmeId(id: string){
+//         const possivelFilme = this.#filme.find(
+//             filmeSalvo => filmeSalvo.id === id
+//         )
 
-        if(!possivelFilme){
-            throw new Error("Filme Encontrado")
-        }
+//         if(!possivelFilme){
+//             throw new Error("Filme Encontrado")
+//         }
 
-        return possivelFilme;
+//         return possivelFilme;
 
-    }
+//     }
 
-    //deleta o filme pelo ID
-    async removerFilme(id: string){
-        const filme = this.buscaFilmeId(id);
+//     //deleta o filme pelo ID
+//     async removerFilme(id: string){
+//         const filme = this.buscaFilmeId(id);
 
-        this.#filme = this.#filme.filter(
-            filmeSalvo => filmeSalvo.id != id
-        )
+//         this.#filme = this.#filme.filter(
+//             filmeSalvo => filmeSalvo.id != id
+//         )
 
-        return filme;
-    }
+//         return filme;
+//     }
 
-    //validar se o filme já existe
-    // async validarFilme(nome: string): Promise<boolean>{
-    //     const possivelFilme = this.#filme.find(
-    //         filme => filme.nome.toLocaleUpperCase === nome.toUpperCase
-    //     );
-    //     return (possivelFilme !== undefined);
-    // }
+//     //validar se o filme já existe
+//     // async validarFilme(nome: string): Promise<boolean>{
+//     //     const possivelFilme = this.#filme.find(
+//     //         filme => filme.nome.toLocaleUpperCase === nome.toUpperCase
+//     //     );
+//     //     return (possivelFilme !== undefined);
+//     // }
 
-}
+// }

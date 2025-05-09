@@ -1,11 +1,11 @@
 export class ListaFilmeDTO{
     constructor(
-        readonly id: String,
-        readonly nome: string,
-        readonly duracao: String,
-        readonly ano: number,
-        readonly genero: string,
-        readonly sinopse: string,
+        readonly ID: string,
+        readonly NOME: string,
+        readonly ANO: number,
+        readonly GENERO: string,
+        readonly DURACAO: number,
+        readonly SINOPSE: string,
         
     ){}
 }

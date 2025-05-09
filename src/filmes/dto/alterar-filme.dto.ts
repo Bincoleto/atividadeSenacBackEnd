@@ -4,24 +4,24 @@ export class alteraFilmeDto{
     @IsString()
     @IsNotEmpty({message: "Nome não pode ser vazio"})
     @IsOptional()
-    nome: string;
+    NOME: string;
 
     @IsString()
     @IsOptional()
-    duracao: string;
+    DURACAO: number;
 
     @IsString()
     @IsOptional()
-    sinopse: string;
+    SINOPSE: string;
 
     @IsInt()
     @IsNotEmpty({message: "Informe o ano, exp: AAAA"})
     @IsOptional()
-    ano: number;
+    ANO: number;
 
     @IsString()
     @IsNotEmpty({message: "Informe o Genero do filme, exp: Terror, Drana, Ação..."})
     @IsOptional()
-    genero: string;
+    GENERO: string;
 
 }

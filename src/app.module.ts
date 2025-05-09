@@ -3,9 +3,10 @@
 // import { AppService } from './app.service';
 import { UsuarioModule } from './usuario/usuario.modulo';
 import { FilmeModule } from './filmes/filme.modulo';
+import { GeneroModule } from './genero/genero.modulo';
 
 @Module({
-  imports: [UsuarioModule, FilmeModule],
+  imports: [UsuarioModule, FilmeModule, GeneroModule],
   controllers: [],
   providers: [],
 })

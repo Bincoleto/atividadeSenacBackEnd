@@ -1,21 +1,34 @@
+import { GENERO} from "src/genero/genero.entity";
+import { PESSOA } from "src/pessoa/pessoa.entity";
+import { Column, JoinColumn, ManyToMany, ManyToOne, PrimaryColumn } from "typeorm";
 
 
-export class FilmeEntity{
+export class FILME{
 
-    id: String;
-    nome: string;
-    duracao: string;
-    sinopse: string;
-    ano: number;
-    genero: string;
-    
+    @PrimaryColumn()
+    ID: string;
 
-    constructor(id: string, nome: string, duracao: string, sinopse: string, ano:number, genero: string){
-        this.id = id;
-        this.nome = nome;
-        this.duracao = duracao;
-        this.sinopse = sinopse;
-        this.ano = ano;
-        this.genero = genero;
-    }
+    @Column({length:255})
+    NOME: string;
+
+    @Column({length: 255})
+    DURACAO: number;
+
+    @Column()
+    SINOPSE: string;
+
+    @Column('int')
+    ANO: number;
+
+   
+    @ManyToOne(() => GENERO, genero => genero.filmes)
+    @JoinColumn({name: 'IDGENERO', referencedColumnName: 'ID'})
+    GENERO: GENERO;
+
+    @ManyToMany(
+        () => PESSOA,
+        ator => ator.filmes,
+        {onDelete: 'NO ACTION', onUpdate: 'NO ACTION'}
+    )
+    atores?: PESSOA[]
 }
